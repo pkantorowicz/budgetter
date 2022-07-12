@@ -1,0 +1,74 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <!--  BudgetPlanSelectionPage  -->
+    <system:String x:Key="StartText">Start</system:String>
+
+    <!--  BudgetPlanSelectionControl  -->
+    <system:String x:Key="SelectBudgetPlanText">Choose budget plan</system:String>
+    <system:String x:Key="ModifyText">Edit</system:String>
+
+    <!--  BudgetPlanControl  -->
+    <system:String x:Key="BudgetPlanNameText">Budget plan name</system:String>
+    <system:String x:Key="CurrencyText">Currency</system:String>
+    <system:String x:Key="CurrencyHelperText">Currency cannot be changed after budget plan creation.</system:String>
+    <system:String x:Key="DateStartText">Valid from</system:String>
+    <system:String x:Key="DateEndText">Valid to</system:String>
+    <system:String x:Key="MonthlyText">Monthly</system:String>
+    <system:String x:Key="QuarterlyText">Quarterly</system:String>
+    <system:String x:Key="SaveText">Save</system:String>
+    <system:String x:Key="CreateText">Create</system:String>
+    <system:String x:Key="CancelText">Cancel</system:String>
+
+    <!--  BudgetPlanViewModel  -->
+    <system:String x:Key="TitleValidationText">Field 'Budget plan name' can not be empty, must be longer than 3 and shorter than 60 characters.</system:String>
+    <system:String x:Key="CurrencyValidationText">Field 'Currency' can not be empty.</system:String>
+    <system:String x:Key="ValidFromValidationText">Field 'Valid from' can not be greater than 'Valid to' and difference between this dates can not be greater than 1 year.</system:String>
+    <system:String x:Key="ValidToValidationText">Field 'Valid to' can not be lower than 'Valid from' and difference between this dates can not be greater than 1 year.</system:String>
+
+    <!--  Search  -->
+    <system:String x:Key="SearchTextPlaceholder">Search</system:String>
+
+    <!--  Navigation  -->
+    <system:String x:Key="NextButtonText">Next</system:String>
+    <system:String x:Key="BackButtonText">Back</system:String>
+
+    <!--  FinanceOperationPage  -->
+    <system:String x:Key="FinanceOperationsPageHeader">Finance Operations</system:String>
+    <system:String x:Key="FinanceOperationsLowerHeader">OPERATIONS LIST</system:String>
+    <system:String x:Key="IncomesSummaryIndicator">INCOMES:</system:String>
+    <system:String x:Key="ExpensesSummaryIndicator">EXPENSES:</system:String>
+    <system:String x:Key="ImportButtonText">import operations</system:String>
+    <system:String x:Key="ExportButtonText">export operations</system:String>
+
+    <!--  FinanceOperationFilter  -->
+    <system:String x:Key="DateRangeHeader">PERIOD</system:String>
+    <system:String x:Key="DateFrom">From</system:String>
+    <system:String x:Key="DateFromHint">Enter date from</system:String>
+    <system:String x:Key="DateTo">To</system:String>
+    <system:String x:Key="DateToHint">Enter date to</system:String>
+    <system:String x:Key="CurrentMonthRadioButtonText">Current month</system:String>
+    <system:String x:Key="LastMonthRadioButtonText">Last month</system:String>
+    <system:String x:Key="LastThreeMonthRadioButtonText">Last three months</system:String>
+    <system:String x:Key="LastHalfYearRadioButtonText">Last half year</system:String>
+    <system:String x:Key="ValueDateRangeHeader">VALUE</system:String>
+    <system:String x:Key="ValueFrom">From</system:String>
+    <system:String x:Key="ValueFromHint">Enter minimum value</system:String>
+    <system:String x:Key="ValueTo">To</system:String>
+    <system:String x:Key="ValueToHint">Enter maximum value</system:String>
+    <system:String x:Key="ClearButtonText">Clear</system:String>
+
+    <!--  FinanceOperationList  -->
+    <system:String x:Key="TitleHeaderText">TITLE</system:String>
+    <system:String x:Key="TitleHint">Title</system:String>
+    <system:String x:Key="ValueHeaderText">VALUE</system:String>
+    <system:String x:Key="ValueHint">Value</system:String>
+    <system:String x:Key="CurrencyHeaderText">CURRENCY</system:String>
+    <system:String x:Key="OccurredAtHeaderText">OPERATION DATE</system:String>
+    <system:String x:Key="OperationTitleValidationText">Field 'Title' can not be empty, must be longer than 3 and shorter than 60 characters.</system:String>
+    <system:String x:Key="OperationValueValidationText">Field 'Value' can not be equals 0 and must be in range from -1000000 to 1000000.</system:String>
+    <system:String x:Key="OperationOccurredAtValidationText">Field 'Operation date' must be in range of budget plan dates.</system:String>
+
+</ResourceDictionary>

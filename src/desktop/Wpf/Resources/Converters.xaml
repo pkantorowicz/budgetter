@@ -1,0 +1,10 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Budgetter.Wpf.Resources.Converters">
+
+    <converters:InverseBoolPropertyBindingConverter x:Key="InverseBoolPropertyBindingConverter" />
+    <converters:BooleanToBackgroundColorConverter x:Key="BooleanToBackgroundColorConverter" />
+    <converters:FinanceOperationTypeToForegroundColorConverter x:Key="FinanceOperationTypeToForegroundColorConverter" />
+
+</ResourceDictionary>

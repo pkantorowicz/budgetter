@@ -1,0 +1,132 @@
+﻿<UserControl
+    x:Class="Budgetter.Wpf.Views.Pages.BudgetPlanningPage.BudgetPlanningPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:budgetPlanningPageControls="clr-namespace:Budgetter.Wpf.Views.Pages.BudgetPlanningPage.Controls"
+    xmlns:controls="clr-namespace:Budgetter.Wpf.Views.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Name="BudgetPlanningControl">
+
+    <UserControl.Resources>
+        <Style
+            x:Key="HeaderTextBlockStyle"
+            BasedOn="{StaticResource MaterialDesignTextBlock}"
+            TargetType="TextBlock">
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{StaticResource MaterialDesignDarkForeground}" />
+        </Style>
+
+        <Style
+            x:Key="LowerHeaderTextBlockStyleBlockStyle"
+            BasedOn="{StaticResource MaterialDesignTextBlock}"
+            TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid Background="{StaticResource MaterialDesignLightBackground}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.75*" />
+            <ColumnDefinition Width="8.25*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*" />
+                <RowDefinition Height="9.6*" />
+                <RowDefinition Height="0.2*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*" />
+                <ColumnDefinition Width="9.3*" />
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card
+                Grid.Row="1"
+                Grid.Column="1"
+                Padding="20">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="9.5*" />
+                        <RowDefinition Height="0.5*" />
+                    </Grid.RowDefinitions>
+
+                    <budgetPlanningPageControls:BudgetPlanningPageExpensesListControl Grid.Row="0"
+                        DataContext="{Binding BudgetPlanningPageExpensesListViewModel}" />
+
+                    <controls:NavigationControl
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        GoBackCommand="{Binding GoBackCommand}"
+                        GoNextCommand="{Binding GoNextCommand}" />
+
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*" />
+                <RowDefinition Height="1.5*" />
+                <RowDefinition Height="0.2*" />
+                <RowDefinition Height="7.9*" />
+                <RowDefinition Height="0.2*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.15*" />
+                <ColumnDefinition Width="9.7*" />
+                <ColumnDefinition Width="0.15*" />
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card
+                Grid.Row="1"
+                Grid.Column="1"
+                Padding="50,20"
+                Background="{DynamicResource PrimaryHueMidBrush}">
+
+                <StackPanel>
+                    <TextBlock Style="{StaticResource HeaderTextBlockStyle}"
+                               Text="{DynamicResource FinanceOperationsPageHeader}" />
+
+                    <TextBlock
+                        Foreground="{StaticResource MaterialDesignDarkForeground}"
+                        Style="{StaticResource LowerHeaderTextBlockStyleBlockStyle}"
+                        Text="{Binding BudgetPlanContext.Title, Mode=OneWay}" />
+
+                    <TextBlock Foreground="{StaticResource MaterialDesignDarkForeground}"
+                               Style="{StaticResource LowerHeaderTextBlockStyleBlockStyle}">
+                        <Run Text="{Binding BudgetPlanContext.ValidFrom, StringFormat='{}{0:MM/dd/yyyy}', Mode=OneWay}" />
+                        <Run Text=" - " />
+                        <Run Text="{Binding BudgetPlanContext.ValidTo, StringFormat='{}{0:MM/dd/yyyy}', Mode=OneWay}" />
+                    </TextBlock>
+                </StackPanel>
+
+            </materialDesign:Card>
+
+            <materialDesign:Card
+                Grid.Row="3"
+                Grid.Column="1"
+                Padding="10">
+
+                <budgetPlanningPageControls:BudgetPlanningPageTargetListControl
+                    DataContext="{Binding BudgetPlanningPageTargetListViewModel}" />
+
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</UserControl>

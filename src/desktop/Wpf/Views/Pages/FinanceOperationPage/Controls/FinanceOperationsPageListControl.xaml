@@ -1,0 +1,226 @@
+﻿<UserControl
+    x:Class="Budgetter.Wpf.Views.Pages.FinanceOperationPage.Controls.FinanceOperationsPageListControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="585"
+    d:DesignWidth="1520"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="ListViewHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                        <Border
+                            Background="Transparent"
+                            BorderBrush="Black"
+                            BorderThickness="0,0,0,1">
+
+                            <TextBlock
+                                x:Name="ContentHeader"
+                                Width="{TemplateBinding Width}"
+                                Padding="8,5,5,5"
+                                Text="{TemplateBinding Content}"
+                                TextAlignment="Left" />
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style
+            x:Key="TextBlockStyle"
+            BasedOn="{StaticResource MaterialDesignTextBlock}"
+            TargetType="TextBlock">
+            <Setter Property="Margin" Value="1.75,0,0,1" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Visibility"
+                    Value="{Binding Editing, Converter={StaticResource InverseBoolToVisConverter}}" />
+        </Style>
+
+        <Style
+            x:Key="TextBoxStyle"
+            BasedOn="{StaticResource MaterialDesignTextBox}"
+            TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="materialDesign:HintAssist.IsFloating" Value="False" />
+            <Setter Property="Visibility"
+                    Value="{Binding Editing, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        </Style>
+
+        <Style
+            x:Key="DatePickerStyle"
+            BasedOn="{StaticResource MaterialDesignDatePicker}"
+            TargetType="DatePicker">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="IsTodayHighlighted" Value="True" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Visibility"
+                    Value="{Binding Editing, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        </Style>
+
+        <Style
+            x:Key="AddButtonStyle"
+            BasedOn="{StaticResource MaterialDesignIconButton}"
+            TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource MaterialDesignDarkForeground}" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <ListView
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding FinanceOperations}"
+            SelectedValue="{Binding SelectedFinanceOperation}"
+            SelectionMode="Single"
+            Style="{StaticResource MaterialDesignListView}">
+
+            <ListView.ItemContainerStyle>
+                <Style BasedOn="{StaticResource MaterialDesignGridViewItem}" TargetType="ListViewItem">
+                    <Setter Property="Height" Value="43" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource ListViewHeaderStyle}">
+
+                    <GridViewColumn Header="{DynamicResource TitleHeaderText}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBox
+                                        MinWidth="450"
+                                        materialDesign:HintAssist.Hint="{DynamicResource TitleHint}"
+                                        Style="{StaticResource TextBoxStyle}"
+                                        Text="{Binding Title, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock
+                                        MinWidth="450"
+                                        Style="{StaticResource TextBlockStyle}"
+                                        Text="{Binding Title}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="{DynamicResource ValueHeaderText}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBox
+                                        MinWidth="175"
+                                        materialDesign:HintAssist.Hint="{DynamicResource ValueHint}"
+                                        FontWeight="Bold"
+                                        Foreground="{Binding Type, Converter={StaticResource FinanceOperationTypeToForegroundColorConverter}}"
+                                        Style="{StaticResource TextBoxStyle}"
+                                        Text="{Binding Price, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock
+                                        MinWidth="175"
+                                        FontWeight="Bold"
+                                        Foreground="{Binding Type, Converter={StaticResource FinanceOperationTypeToForegroundColorConverter}}"
+                                        Style="{StaticResource TextBlockStyle}"
+                                        Text="{Binding Price}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="{DynamicResource CurrencyHeaderText}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    MinWidth="175"
+                                    Style="{StaticResource TextBlockStyle}"
+                                    Text="{Binding Currency}"
+                                    Visibility="Visible" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="{DynamicResource OccurredAtHeaderText}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel VerticalAlignment="Center">
+                                    <DatePicker
+                                        MinWidth="240"
+                                        SelectedDate="{Binding OccurredAt, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                                        Style="{StaticResource DatePickerStyle}" />
+                                    <TextBlock
+                                        MinWidth="240"
+                                        Style="{StaticResource TextBlockStyle}"
+                                        Text="{Binding OccurredAt, StringFormat='dd/MM/yyyy'}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel MinWidth="215" Orientation="Horizontal">
+                                    <Button
+                                        Margin="2,-5"
+                                        Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                        CommandParameter="{Binding}"
+                                        Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVisConverter}}">
+                                        <materialDesign:PackIcon Kind="Pencil" />
+                                    </Button>
+                                    <Button
+                                        Margin="2,-5"
+                                        Background="IndianRed"
+                                        Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                        Visibility="{Binding Editing, Converter={StaticResource InverseBoolToVisConverter}}">
+                                        <materialDesign:PackIcon Kind="Delete" />
+                                    </Button>
+                                    <Button
+                                        Margin="2,-5"
+                                        Command="{Binding DataContext.ConfirmCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                        CommandParameter="{Binding}"
+                                        Visibility="{Binding Editing, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <materialDesign:PackIcon Kind="Check" />
+                                    </Button>
+                                    <Button
+                                        Margin="2,-5"
+                                        Background="IndianRed"
+                                        Command="{Binding DataContext.CancelCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                        CommandParameter="{Binding}"
+                                        Visibility="{Binding Editing, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <materialDesign:PackIcon Kind="CloseThick" />
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button
+            Grid.Row="1"
+            Command="{Binding AddCommand}"
+            Style="{StaticResource AddButtonStyle}">
+            <materialDesign:PackIcon Kind="Plus" />
+        </Button>
+    </Grid>
+</UserControl>

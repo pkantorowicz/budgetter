@@ -1,0 +1,74 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <!--  BudgetPlanSelectionPage  -->
+    <system:String x:Key="StartText">Rozpocznij</system:String>
+
+    <!--  BudgetPlanSelectionControl  -->
+    <system:String x:Key="SelectBudgetPlanText">Wybierz plan budżetowy z listy</system:String>
+    <system:String x:Key="ModifyText">Edytuj</system:String>
+
+    <!--  BudgetPlanControl  -->
+    <system:String x:Key="BudgetPlanNameText">Nazwa planu budżetowego</system:String>
+    <system:String x:Key="CurrencyText">Waluta</system:String>
+    <system:String x:Key="CurrencyHelperText">Waluta nie może zostać zmieniona po utworzeniu planu budżetowego.</system:String>
+    <system:String x:Key="DateStartText">Data startu</system:String>
+    <system:String x:Key="DateEndText">Data końca</system:String>
+    <system:String x:Key="MonthlyText">Miesięczny</system:String>
+    <system:String x:Key="QuarterlyText">Kwartalny</system:String>
+    <system:String x:Key="SaveText">Zapisz</system:String>
+    <system:String x:Key="CreateText">Utwórz</system:String>
+    <system:String x:Key="CancelText">Cofnij</system:String>
+
+    <!--  BudgetPlanViewModel  -->
+    <system:String x:Key="TitleValidationText">Pole 'Nazwa planu budżetowego' nie może być pusta, musi być wieksza niż 3 znaki i mniejsza od 60 znaków.</system:String>
+    <system:String x:Key="CurrencyValidationText">Pole 'Waluta' nie może być pusta.</system:String>
+    <system:String x:Key="ValidFromValidationText">Pole 'Data Startu' nie może być większe od 'Data Końca' oraz różnica między datami nie może być większa niż rok miesiące.</system:String>
+    <system:String x:Key="ValidToValidationText">Pole 'Data Końca' nie może być mniejsze od 'Data Startu' oraz różnica między datami nie może być większa niż rok miesiące.</system:String>
+
+    <!--  FinanceOperationPage  -->
+    <system:String x:Key="FinanceOperationsPageHeader">Operacje finansowe</system:String>
+    <system:String x:Key="FinanceOperationsLowerHeader">LISTA OPERACJI</system:String>
+    <system:String x:Key="IncomesSummaryIndicator">WPŁYWY:</system:String>
+    <system:String x:Key="ExpensesSummaryIndicator">WYDATKI:</system:String>
+    <system:String x:Key="ImportButtonText">importuj operacje</system:String>
+    <system:String x:Key="ExportButtonText">eksportuj listę</system:String>
+
+    <!--  Search  -->
+    <system:String x:Key="SearchTextPlaceholder">Wyszukaj</system:String>
+
+    <!--  Navigation  -->
+    <system:String x:Key="NextButtonText">Dalej</system:String>
+    <system:String x:Key="BackButtonText">Cofnij</system:String>
+
+    <!--  FinanceOperationFilter  -->
+    <system:String x:Key="DateRangeHeader">OKRES</system:String>
+    <system:String x:Key="DateFrom">Od</system:String>
+    <system:String x:Key="DateFromHint">Podaj date dla początku zakresu</system:String>
+    <system:String x:Key="DateTo">Do</system:String>
+    <system:String x:Key="DateToHint">Podaj date dla końca zakresu</system:String>
+    <system:String x:Key="CurrentMonthRadioButtonText">Bieżacy miesiąc</system:String>
+    <system:String x:Key="LastMonthRadioButtonText">Ostatni miesiąc</system:String>
+    <system:String x:Key="LastThreeMonthRadioButtonText">Ostatnie trzy miesiące</system:String>
+    <system:String x:Key="LastHalfYearRadioButtonText">Ostatnie pół roku</system:String>
+    <system:String x:Key="ValueDateRangeHeader">KWOTA</system:String>
+    <system:String x:Key="ValueFrom">Od</system:String>
+    <system:String x:Key="ValueFromHint">Podaj kwotę dla początku zakresu</system:String>
+    <system:String x:Key="ValueTo">Do</system:String>
+    <system:String x:Key="ValueToHint">Podaj kwotę dla końca zakresu</system:String>
+    <system:String x:Key="ClearButtonText">Wyczyść</system:String>
+
+    <!--  FinanceOperationList  -->
+    <system:String x:Key="TitleHeaderText">NAZWA</system:String>
+    <system:String x:Key="TitleHint">Nazwa</system:String>
+    <system:String x:Key="ValueHeaderText">WARTOŚĆ</system:String>
+    <system:String x:Key="ValueHint">Wartość</system:String>
+    <system:String x:Key="CurrencyHeaderText">WALUTA</system:String>
+    <system:String x:Key="OccurredAtHeaderText">DATA OPERACJI</system:String>
+    <system:String x:Key="OperationTitleValidationText">Pole 'Nazwa' nie może być puste, musi być wieksze niż 3 znaki i mniejsze od 60 znaków.</system:String>
+    <system:String x:Key="OperationValueValidationText">Pole 'Wartość' nie może być równe zero i być z zakresu od -1000000 do 1000000.</system:String>
+    <system:String x:Key="OperationOccurredAtValidationText">Pole 'Data operacji' musi znajdować się w zakresie dat planu budżetowego.</system:String>
+
+</ResourceDictionary>
